@@ -10,7 +10,7 @@ public class Homework17 extends BaseTest {
     @Test
     public void addSongToPlaylist() throws InterruptedException {
 
-        String songAddedNotification = "Created playlist " + "getRandomString()";
+        String songAddedNotification = "Added 1 song to \"Test Pro Playlist.\"";
 
         navigateToPage();
         emailInput("demo@class.com");
@@ -22,21 +22,9 @@ public class Homework17 extends BaseTest {
         firstSongResult();
         clickAddToBtn();
         createNewPlaylist();
-        getRandomString();
+
         Assert.assertEquals(getAddToPlaylistSuccessMsg(), songAddedNotification);
     }
-
-    private String getRandomString() {
-        UUID uuid = UUID.randomUUID();
-        return uuid.toString();
-    }
-    protected void enterText(By inputLocator, String inputText) {
-        WebElement searchInput = driver.findElement(inputLocator);
-        searchInput.click();
-        searchInput.clear();
-        searchInput.sendKeys(inputText);
-    }
-
     public void searchSong(String name) throws InterruptedException {
         WebElement searchField = driver.findElement(By.cssSelector("div#searchForm input[type='search']"));
         searchField.sendKeys(name);
@@ -58,7 +46,8 @@ public class Homework17 extends BaseTest {
         Thread.sleep(2000);
     }
     public void createNewPlaylist() throws InterruptedException {
-        enterText(By.cssSelector("#songResultsWrapper [data-test='new-playlist-name']"),getRandomString());
+        WebElement newPlaylist = driver.findElement(By.xpath("//section[@id='songResultsWrapper']//li[contains(text(), 'Test Pro Playlist')"));
+        newPlaylist.click();
         Thread.sleep(2000);
     }
     public String getAddToPlaylistSuccessMsg() {
