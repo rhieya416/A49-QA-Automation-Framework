@@ -16,7 +16,7 @@ public class Homework18 extends BaseTest {
     }
 
     private void songIsPlaying() {
-       WebElement soundBar = driver.findElement(By.cssSelector("[data-testid='sound-bay-play']"));
+       WebElement soundBar = driver.findElement(By.cssSelector("[data-testid='sound-bar-play']"));
         Assert.assertTrue(soundBar.isDisplayed());
    }
     private void clickPlayNextBtn() throws InterruptedException {

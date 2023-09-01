@@ -13,21 +13,22 @@ import java.time.Duration;
 
 public class BaseTest {
     public WebDriver driver = null;
-    public String url;
+    public String url = "https://qa.koel.app/";
 
     @BeforeSuite
     static void setupClass() {
         WebDriverManager.chromedriver().setup();
     }
     @BeforeMethod
-        public void launchBrowser(String baseUrl) {
+        public void launchBrowser() {
         ChromeOptions options = new ChromeOptions();
-        options.addArguments("--remote-allow-origins");
+        options.addArguments("--remote-allow-origins=*");
         options.addArguments("--disable-notifications");
         options.addArguments("--start-maximized");
-        url = baseUrl;
+
         driver = new ChromeDriver(options);
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+        driver.manage().window().maximize();
     }
     @AfterMethod
     public void closeBrowser() {
