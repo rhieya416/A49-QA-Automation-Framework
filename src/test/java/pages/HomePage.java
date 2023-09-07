@@ -14,9 +14,9 @@ public class HomePage extends BasePage {
     public HomePage(WebDriver givenDriver) {
         super(givenDriver);
     }
-    By firstPlaylist = By.cssSelector(".playlist:nth-child(3)");
-    By playlistNameField = By.cssSelector("[name='name']");
-    By renamePlaylistSuccessMsg =By.cssSelector("div.success.show");
+    private By firstPlaylist = By.cssSelector(".playlist:nth-child(3)");
+    private By playlistNameField = By.cssSelector("[name='name']");
+    private By renamePlaylistSuccessMsg =By.cssSelector("div.success.show");
     public void doubleClickPlaylist() {
         doubleClick(firstPlaylist);
     }
